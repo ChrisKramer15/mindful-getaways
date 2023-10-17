@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Mindful Getaways",
       theme: ThemeData(
-          scaffoldBackgroundColor: ColorPalette.mainColor,
+          scaffoldBackgroundColor: ColorPalette.darkShade,
           colorScheme:
               const ColorScheme.light(primary: ColorPalette.lightShade)),
       home: const AuthScreen(),
