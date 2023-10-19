@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getaways_flutter/assets/palette.dart';
 
 class CustomTextfield extends StatelessWidget {
   final TextEditingController controller;
@@ -12,6 +13,7 @@ class CustomTextfield extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
           hintText: hintText,
+          hintStyle: const TextStyle(color: ColorPalette.lightAccent),
           border: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.green)),
           enabledBorder: const OutlineInputBorder(
