@@ -23,102 +23,95 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("lib/assets/images/sunset_unsplash.jpg"),
-                fit: BoxFit.cover,
-                opacity: 0.2),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(40, 75, 40, 8),
-            child: Column(
-              children: [
-                const FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Text("MINDFUL GETAWAYS",
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("lib/assets/images/getaways_logo.png"),
+                  alignment: Alignment.topCenter),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(30, 100, 30, 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // ListTile for Signing Up
+                  ListTile(
+                    title: const Text(
+                      "Create Account",
                       style: TextStyle(
-                        fontWeight: FontWeight.w100,
-                        fontSize: 42,
-                        color: Colors.white,
-                      )),
-                ),
-                // ListTile for Signing Up
-                ListTile(
-                  title: const Text(
-                    "Create Account",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: ColorPalette.mainColor,
+                        fontWeight: FontWeight.bold,
+                        color: ColorPalette.mainColor,
+                      ),
                     ),
+                    leading: Radio(
+                        value: Auth.register,
+                        groupValue: _auth,
+                        onChanged: (Auth? val) {
+                          setState(() {
+                            _auth = val!;
+                          });
+                        }),
                   ),
-                  leading: Radio(
-                      value: Auth.register,
-                      groupValue: _auth,
-                      onChanged: (Auth? val) {
-                        setState(() {
-                          _auth = val!;
-                        });
-                      }),
-                ),
 
-                if (_auth == Auth.register)
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    color: ColorPalette.darkShade,
-                    child: Form(
-                        child: Column(
-                      children: [
-                        CustomTextfield(
-                            controller: _emailController, hintText: "Email"),
-                        const SizedBox(height: 10),
-                        CustomTextfield(
-                            controller: _passwordController,
-                            hintText: "Password"),
-                        const SizedBox(height: 10),
-                        CustomTextfield(
-                            controller: _confirmPwController,
-                            hintText: "Confirm Password"),
-                        const SizedBox(height: 10),
-                        CustomButton(text: "Register", onTap: () {})
-                      ],
-                    )),
+                  if (_auth == Auth.register)
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      color: ColorPalette.darkShade,
+                      child: Form(
+                          child: Column(
+                        children: [
+                          CustomTextfield(
+                              controller: _emailController, hintText: "Email"),
+                          const SizedBox(height: 10),
+                          CustomTextfield(
+                              controller: _passwordController,
+                              hintText: "Password"),
+                          const SizedBox(height: 10),
+                          CustomTextfield(
+                              controller: _confirmPwController,
+                              hintText: "Confirm Password"),
+                          const SizedBox(height: 10),
+                          CustomButton(text: "Register", onTap: () {})
+                        ],
+                      )),
+                    ),
+                  // // ListTile for Logging In
+                  ListTile(
+                    title: const Text("Existing Users",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: ColorPalette.mainColor)),
+                    leading: Radio(
+                        value: Auth.login,
+                        groupValue: _auth,
+                        onChanged: (Auth? val) {
+                          setState(() {
+                            _auth = val!;
+                          });
+                        }),
                   ),
-                // // ListTile for Logging In
-                ListTile(
-                  title: const Text("Existing Users",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: ColorPalette.mainColor)),
-                  leading: Radio(
-                      value: Auth.login,
-                      groupValue: _auth,
-                      onChanged: (Auth? val) {
-                        setState(() {
-                          _auth = val!;
-                        });
-                      }),
-                ),
-                if (_auth == Auth.login)
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    color: ColorPalette.darkShade,
-                    child: Form(
-                        child: Column(
-                      children: [
-                        CustomTextfield(
-                            controller: _emailController, hintText: "Email"),
-                        const SizedBox(height: 10),
-                        CustomTextfield(
-                            controller: _passwordController,
-                            hintText: "Password"),
-                        const SizedBox(height: 10),
-                        CustomButton(text: "Log In", onTap: () {})
-                      ],
-                    )),
-                  ),
-              ],
+                  if (_auth == Auth.login)
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      color: ColorPalette.darkShade,
+                      child: Form(
+                          child: Column(
+                        children: [
+                          CustomTextfield(
+                              controller: _emailController, hintText: "Email"),
+                          const SizedBox(height: 10),
+                          CustomTextfield(
+                              controller: _passwordController,
+                              hintText: "Password"),
+                          const SizedBox(height: 10),
+                          CustomButton(text: "Log In", onTap: () {})
+                        ],
+                      )),
+                    ),
+                ],
+              ),
             ),
           ),
         ),
